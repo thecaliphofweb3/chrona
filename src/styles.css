@@ -1,0 +1,1152 @@
+:root {
+  color: #2d203f;
+  background: #fbf8f3;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button {
+  font: inherit;
+}
+
+.app-shell {
+  min-height: 100vh;
+}
+
+.welcome-screen {
+  position: relative;
+  display: grid;
+  min-height: 100vh;
+  overflow: hidden;
+  place-items: center;
+  isolation: isolate;
+  background:
+    linear-gradient(105deg, rgba(63, 34, 93, 0.88) 0%, rgba(91, 54, 122, 0.68) 38%, rgba(105, 67, 132, 0.2) 70%, rgba(255, 193, 132, 0.08) 100%),
+    url("/assets/sunrise-beach.jpg") center / cover no-repeat;
+}
+
+.welcome-screen::before {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  content: "";
+  opacity: 0.4;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 100% 7px;
+  mix-blend-mode: overlay;
+}
+
+.sunrise-glow {
+  position: absolute;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(3px);
+}
+
+.sunrise-glow-left {
+  width: 26rem;
+  height: 26rem;
+  top: -8rem;
+  left: -11rem;
+  background: rgba(255, 238, 179, 0.35);
+}
+
+.sunrise-glow-right {
+  width: 35rem;
+  height: 35rem;
+  right: -17rem;
+  bottom: -14rem;
+  background: rgba(77, 42, 120, 0.38);
+}
+
+.welcome-content {
+  display: grid;
+  width: min(100% - 2rem, 43rem);
+  justify-items: center;
+  padding: 3rem 1rem 5.5rem;
+  text-align: center;
+}
+
+.brand-mark {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+}
+
+.eyebrow {
+  margin: 2.6rem 0 0.6rem;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.86rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.welcome-screen h1,
+.planning-hub h1,
+.planning-card h2 {
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+.welcome-screen h1 {
+  max-width: 7ch;
+  margin: 0;
+  color: #fffdf7;
+  font-size: clamp(4.5rem, 13vw, 8rem);
+  font-weight: 500;
+  line-height: 0.9;
+  letter-spacing: -0.08em;
+  text-shadow: 0 0.2rem 1.8rem rgba(55, 26, 85, 0.24);
+}
+
+.quote-card {
+  width: min(100%, 33rem);
+  margin: 2.2rem 0 2.3rem;
+  padding: 1.2rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 1.25rem;
+  color: #fffdf7;
+  background: rgba(69, 42, 99, 0.2);
+  box-shadow: 0 1rem 3rem rgba(53, 27, 77, 0.14);
+  backdrop-filter: blur(10px);
+}
+
+.quote-card blockquote {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(1.08rem, 2vw, 1.33rem);
+  font-style: italic;
+  line-height: 1.5;
+}
+
+.quote-card figcaption {
+  margin-top: 0.65rem;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.primary-button {
+  display: inline-flex;
+  gap: 0.65rem;
+  align-items: center;
+  padding: 0.88rem 1.2rem 0.88rem 1.45rem;
+  border: 0;
+  border-radius: 999px;
+  color: #513274;
+  background: #fffaf1;
+  box-shadow: 0 0.8rem 2rem rgba(48, 23, 73, 0.22);
+  cursor: pointer;
+  font-weight: 800;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.primary-button:hover,
+.primary-button:focus-visible {
+  outline: none;
+  transform: translateY(-2px);
+  box-shadow: 0 1.1rem 2.5rem rgba(48, 23, 73, 0.28);
+}
+
+.primary-button span {
+  font-size: 1.2rem;
+}
+
+.welcome-footer {
+  position: absolute;
+  right: 1rem;
+  bottom: 1.25rem;
+  left: 1rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.88rem;
+  text-align: center;
+}
+
+.planning-hub {
+  min-height: 100vh;
+  padding: 1.25rem clamp(1rem, 4vw, 4rem) 3rem;
+  color: #38264d;
+  background:
+    radial-gradient(circle at 8% 0%, rgba(214, 188, 241, 0.55), transparent 21rem),
+    radial-gradient(circle at 92% 92%, rgba(255, 218, 185, 0.65), transparent 25rem),
+    #fbf8f3;
+}
+
+.hub-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 72rem;
+  margin: 0 auto;
+}
+
+.hub-header .brand-mark {
+  color: #6e4a97;
+}
+
+.text-button {
+  padding: 0.4rem 0;
+  border: 0;
+  color: #624187;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+.hub-intro {
+  max-width: 45rem;
+  margin: clamp(4.8rem, 11vw, 8rem) auto 2.5rem;
+  text-align: center;
+}
+
+.hub-intro .eyebrow {
+  margin: 0 0 0.8rem;
+  color: #7d579f;
+}
+
+.hub-intro h1 {
+  margin: 0;
+  font-size: clamp(2.5rem, 6vw, 4.7rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.055em;
+}
+
+.hub-intro > p:last-child {
+  margin: 1rem 0 0;
+  color: #6b5a78;
+  font-size: 1.05rem;
+}
+
+.planning-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  width: min(100%, 72rem);
+  margin: 0 auto;
+}
+
+.planning-card {
+  min-height: 17rem;
+  padding: 1.55rem;
+  border: 1px solid rgba(99, 72, 128, 0.14);
+  border-radius: 1.5rem;
+  background: rgba(255, 255, 255, 0.68);
+  box-shadow: 0 1rem 2.5rem rgba(84, 55, 114, 0.08);
+}
+
+.planning-card:nth-child(2) {
+  transform: translateY(1.2rem);
+  background: rgba(247, 236, 255, 0.78);
+}
+
+.planning-icon {
+  display: grid;
+  width: 2.7rem;
+  height: 2.7rem;
+  place-items: center;
+  border-radius: 0.9rem;
+  color: #fff;
+  background: linear-gradient(145deg, #6d4595, #a782c8);
+  font-size: 1.35rem;
+}
+
+.planning-card h2 {
+  margin: 2.7rem 0 0.6rem;
+  font-size: 1.7rem;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.planning-card p {
+  max-width: 20ch;
+  margin: 0;
+  color: #6c5d77;
+  line-height: 1.55;
+}
+
+.card-status {
+  display: inline-block;
+  margin-top: 1.6rem;
+  color: #7a519f;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.card-button,
+.secondary-button {
+  display: inline-flex;
+  gap: 0.5rem;
+  align-items: center;
+  padding: 0;
+  border: 0;
+  color: #754b9d;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.card-button {
+  margin-top: 1.6rem;
+}
+
+.card-button:hover,
+.card-button:focus-visible,
+.secondary-button:hover,
+.secondary-button:focus-visible {
+  color: #4e2e70;
+  outline: none;
+  text-decoration: underline;
+}
+
+.hub-note {
+  display: flex;
+  gap: 0.65rem;
+  align-items: flex-start;
+  width: min(100%, 38rem);
+  margin: 4.5rem auto 0;
+  padding: 1.1rem 1.2rem;
+  border-radius: 1rem;
+  color: #59406f;
+  background: rgba(232, 214, 247, 0.58);
+  font-size: 0.93rem;
+  line-height: 1.5;
+}
+
+.hub-note span {
+  color: #8a5bb3;
+}
+
+.planner-screen {
+  min-height: 100vh;
+  padding: 1.25rem clamp(1rem, 4vw, 4rem) 3rem;
+  background:
+    radial-gradient(circle at 87% 7%, rgba(253, 211, 173, 0.64), transparent 19rem),
+    linear-gradient(140deg, #f8f2fd, #fdf9f3 55%, #f6eaf9);
+}
+
+.schedule-screen {
+  background:
+    linear-gradient(100deg, rgba(250, 247, 253, 0.96) 0%, rgba(250, 247, 253, 0.91) 43%, rgba(250, 247, 253, 0.58) 71%, rgba(250, 247, 253, 0.38) 100%),
+    url("/assets/schedule-hourglass.jpg") center / cover no-repeat;
+}
+
+.planner-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 76rem;
+  margin: 0 auto;
+}
+
+.planner-header .brand-mark {
+  color: #6e4a97;
+}
+
+.planner-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(24rem, 1.15fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: start;
+  width: min(100%, 76rem);
+  margin: clamp(4rem, 10vw, 7rem) auto 0;
+}
+
+.planner-intro {
+  position: sticky;
+  top: 2rem;
+}
+
+.planner-intro .eyebrow,
+.section-heading .eyebrow {
+  margin: 0 0 0.8rem;
+  color: #7d579f;
+}
+
+.planner-intro h1 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp(2.65rem, 5vw, 4.6rem);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.06em;
+}
+
+.planner-intro > p:last-child {
+  max-width: 33ch;
+  margin: 1.4rem 0 0;
+  color: #6a5a76;
+  line-height: 1.65;
+}
+
+.schedule-workspace {
+  display: grid;
+  gap: 1rem;
+}
+
+.plan-form,
+.schedule-list,
+.notification-bar {
+  border: 1px solid rgba(100, 75, 130, 0.14);
+  border-radius: 1.4rem;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 1.2rem 3rem rgba(74, 48, 101, 0.08);
+}
+
+.plan-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 9.5rem;
+  gap: 1rem;
+  padding: 1.4rem;
+}
+
+.plan-form label {
+  display: grid;
+  gap: 0.45rem;
+  color: #5c466e;
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.plan-form input {
+  width: 100%;
+  min-height: 2.9rem;
+  padding: 0.7rem 0.8rem;
+  border: 1px solid #d9cadf;
+  border-radius: 0.75rem;
+  color: #332440;
+  background: #fffdf9;
+  font: inherit;
+}
+
+.plan-form input:focus {
+  border-color: #8356a8;
+  outline: 3px solid rgba(131, 86, 168, 0.14);
+}
+
+.plan-form .primary-button {
+  grid-column: 1 / -1;
+  justify-self: start;
+  color: #fff;
+  background: linear-gradient(135deg, #634084, #8f5db4);
+  box-shadow: 0 0.8rem 1.7rem rgba(96, 57, 131, 0.2);
+}
+
+.notification-bar {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.2rem;
+  background: rgba(244, 234, 252, 0.82);
+}
+
+.notification-bar strong {
+  color: #50356b;
+  font-size: 0.9rem;
+}
+
+.notification-bar p {
+  margin: 0.2rem 0 0;
+  color: #786888;
+  font-size: 0.82rem;
+}
+
+.notification-status,
+.storage-warning {
+  color: #78519b;
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-align: right;
+}
+
+.storage-warning {
+  margin: 0;
+  color: #9e3a44;
+}
+
+.schedule-list {
+  padding: 1.4rem;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: #3c2a4e;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+}
+
+.schedule-list ul {
+  display: grid;
+  gap: 0.7rem;
+  padding: 0;
+  margin: 1.2rem 0 0;
+  list-style: none;
+}
+
+.schedule-list li {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr) auto;
+  gap: 0.8rem;
+  align-items: center;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid #ede4f0;
+}
+
+.schedule-list li:last-child {
+  border-bottom: 0;
+}
+
+.schedule-list time {
+  color: #8052a6;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.schedule-list li span {
+  color: #49365b;
+}
+
+.schedule-list li button {
+  width: 1.8rem;
+  height: 1.8rem;
+  border: 0;
+  border-radius: 50%;
+  color: #8a628f;
+  background: #f8ecf7;
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.empty-state {
+  margin: 1.2rem 0 0;
+  color: #776783;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.alarm-backdrop {
+  position: fixed;
+  z-index: 5;
+  inset: 0;
+  display: grid;
+  padding: 1rem;
+  place-items: center;
+  background: rgba(47, 29, 68, 0.58);
+  backdrop-filter: blur(7px);
+}
+
+.alarm-panel {
+  width: min(100%, 28rem);
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 1.7rem;
+  color: #fffdf8;
+  text-align: center;
+  background: linear-gradient(145deg, #67438c, #9a71bb);
+  box-shadow: 0 1.5rem 4rem rgba(29, 14, 43, 0.35);
+}
+
+.alarm-panel .eyebrow {
+  margin: 0 0 0.7rem;
+}
+
+.alarm-panel h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 2.2rem;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.alarm-panel > p:last-of-type {
+  margin: 0.9rem 0 1.5rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.meal-screen {
+  background:
+    linear-gradient(100deg, rgba(255, 250, 244, 0.97) 0%, rgba(255, 250, 244, 0.92) 42%, rgba(251, 246, 255, 0.66) 70%, rgba(247, 236, 244, 0.3) 100%),
+    url("/assets/meal-balance.png") center / cover no-repeat;
+}
+
+.meal-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(26rem, 1.2fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: start;
+  width: min(100%, 76rem);
+  margin: clamp(4rem, 10vw, 7rem) auto 0;
+}
+
+.meal-workspace {
+  display: grid;
+  gap: 1rem;
+}
+
+.wellness-tip {
+  display: flex;
+  gap: 1rem;
+  padding: 1.2rem;
+  border: 1px solid rgba(116, 74, 151, 0.18);
+  border-radius: 1.3rem;
+  color: #4e3d5e;
+  background: rgba(255, 253, 249, 0.76);
+  box-shadow: 0 1rem 2.5rem rgba(87, 53, 110, 0.08);
+}
+
+.wellness-icon {
+  display: grid;
+  flex: 0 0 auto;
+  width: 2.5rem;
+  height: 2.5rem;
+  place-items: center;
+  border-radius: 0.8rem;
+  color: #fff;
+  background: linear-gradient(145deg, #71469c, #ba8ccd);
+}
+
+.wellness-tip .eyebrow {
+  margin: 0 0 0.4rem;
+  color: #7d579f;
+}
+
+.wellness-tip p:not(.eyebrow) {
+  margin: 0;
+  line-height: 1.55;
+}
+
+.wellness-tip a {
+  display: inline-block;
+  margin-top: 0.7rem;
+  color: #71479a;
+  font-size: 0.8rem;
+  font-weight: 800;
+}
+
+.meal-cards {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.meal-card {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.75fr) minmax(0, 1.15fr) minmax(7.2rem, 0.5fr);
+  gap: 1rem;
+  align-items: end;
+  padding: 1.25rem;
+  border: 1px solid rgba(100, 75, 130, 0.14);
+  border-radius: 1.3rem;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 1.2rem 3rem rgba(74, 48, 101, 0.07);
+}
+
+.meal-card .eyebrow {
+  margin: 0 0 0.35rem;
+  color: #8558a7;
+}
+
+.meal-card p:not(.eyebrow) {
+  margin: 0;
+  color: #786988;
+  font-size: 0.82rem;
+  line-height: 1.45;
+}
+
+.meal-card label {
+  display: grid;
+  gap: 0.45rem;
+  color: #5c466e;
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.meal-card label span {
+  color: #96869f;
+  font-weight: 600;
+}
+
+.meal-card input {
+  width: 100%;
+  min-height: 2.8rem;
+  padding: 0.7rem 0.75rem;
+  border: 1px solid #dccfe3;
+  border-radius: 0.7rem;
+  color: #372646;
+  background: #fffdf9;
+  font: inherit;
+}
+
+.meal-card input:focus {
+  border-color: #8356a8;
+  outline: 3px solid rgba(131, 86, 168, 0.14);
+}
+
+.meal-note {
+  margin: 0;
+  color: #7a6986;
+  font-size: 0.79rem;
+  line-height: 1.5;
+}
+
+.outfit-screen {
+  background:
+    linear-gradient(100deg, rgba(255, 250, 248, 0.97) 0%, rgba(248, 243, 255, 0.9) 42%, rgba(252, 239, 247, 0.57) 72%, rgba(252, 239, 247, 0.3) 100%),
+    url("/assets/outfit-wardrobe.jpg") center / cover no-repeat;
+}
+
+.outfit-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.72fr) minmax(29rem, 1.28fr);
+  gap: clamp(2rem, 6vw, 7rem);
+  align-items: start;
+  width: min(100%, 80rem);
+  margin: clamp(4rem, 10vw, 7rem) auto 0;
+}
+
+.outfit-workspace {
+  display: grid;
+  gap: 1rem;
+}
+
+.shape-selector,
+.wardrobe-section,
+.mannequin-preview,
+.completion-panel {
+  border: 1px solid rgba(100, 75, 130, 0.14);
+  border-radius: 1.4rem;
+  background: rgba(255, 255, 255, 0.78);
+  box-shadow: 0 1.2rem 3rem rgba(74, 48, 101, 0.08);
+}
+
+.shape-selector {
+  padding: 1rem 1.2rem;
+}
+
+.shape-selector .eyebrow {
+  margin: 0 0 0.65rem;
+  color: #7d579f;
+}
+
+.shape-selector > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+}
+
+.shape-button {
+  padding: 0.55rem 0.85rem;
+  border: 1px solid #d9cbe2;
+  border-radius: 999px;
+  color: #694b7e;
+  background: #fffdfb;
+  cursor: pointer;
+  font-size: 0.84rem;
+  font-weight: 800;
+}
+
+.shape-button.selected {
+  border-color: #7c4fa4;
+  color: #fff;
+  background: linear-gradient(135deg, #6b4393, #a86cca);
+}
+
+.mannequin-preview {
+  position: relative;
+  display: grid;
+  min-height: 27rem;
+  overflow: hidden;
+  padding: 1.35rem 1.2rem 1rem;
+  place-items: center;
+  background:
+    radial-gradient(circle at 50% 27%, rgba(229, 204, 246, 0.75), transparent 11rem),
+    linear-gradient(145deg, rgba(254, 250, 255, 0.96), rgba(246, 235, 255, 0.84));
+}
+
+.mannequin-preview > p {
+  z-index: 1;
+  align-self: end;
+  margin: 0;
+  color: #826e90;
+  font-size: 0.74rem;
+  text-align: center;
+}
+
+.mannequin-halo {
+  position: absolute;
+  width: 19rem;
+  height: 19rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(202, 157, 231, 0.38), rgba(255, 255, 255, 0));
+}
+
+.mannequin-figure {
+  position: relative;
+  z-index: 1;
+  width: 9rem;
+  height: 22.5rem;
+  transform-origin: center bottom;
+  transition: transform 180ms ease;
+}
+
+.mannequin-slim .mannequin-figure {
+  transform: scaleX(0.85);
+}
+
+.mannequin-plus-size .mannequin-figure {
+  transform: scaleX(1.19);
+}
+
+.mannequin-head,
+.mannequin-neck,
+.mannequin-body,
+.mannequin-leg,
+.mannequin-foot {
+  position: absolute;
+  background: linear-gradient(135deg, #e5c9bb, #c99583);
+  box-shadow: inset 0 0 0 1px rgba(102, 65, 62, 0.08);
+}
+
+.mannequin-head {
+  width: 4.2rem;
+  height: 4.8rem;
+  top: 0;
+  left: 2.4rem;
+  border-radius: 48% 48% 46% 46%;
+}
+
+.mannequin-neck {
+  width: 1.6rem;
+  height: 1.4rem;
+  top: 4.2rem;
+  left: 3.7rem;
+}
+
+.mannequin-body {
+  width: 6.6rem;
+  height: 8.1rem;
+  top: 5.3rem;
+  left: 1.2rem;
+  border-radius: 32% 32% 18% 18%;
+}
+
+.mannequin-leg {
+  width: 2.5rem;
+  height: 7.2rem;
+  top: 13rem;
+  border-radius: 1.2rem 1.2rem 0.7rem 0.7rem;
+}
+
+.mannequin-leg-left {
+  left: 1.8rem;
+}
+
+.mannequin-leg-right {
+  right: 1.8rem;
+}
+
+.mannequin-foot {
+  width: 3.15rem;
+  height: 1.3rem;
+  top: 19.85rem;
+  border-radius: 1rem 1rem 0.6rem 0.6rem;
+}
+
+.mannequin-foot-left {
+  left: 1.25rem;
+}
+
+.mannequin-foot-right {
+  right: 1.25rem;
+}
+
+.outfit-image {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  mix-blend-mode: multiply;
+}
+
+.preview-headwear {
+  width: 5.5rem;
+  height: 2.4rem;
+  top: -0.55rem;
+  left: 1.75rem;
+}
+
+.preview-eyewear {
+  width: 3.9rem;
+  height: 1.25rem;
+  top: 2.05rem;
+  left: 2.55rem;
+}
+
+.preview-top {
+  width: 7.55rem;
+  height: 8.4rem;
+  top: 5.1rem;
+  left: 0.7rem;
+}
+
+.preview-bottom {
+  width: 7rem;
+  height: 7.7rem;
+  top: 12.7rem;
+  left: 1rem;
+}
+
+.preview-footwear {
+  width: 8rem;
+  height: 2.1rem;
+  top: 19.4rem;
+  left: 0.5rem;
+}
+
+.wardrobe-section {
+  padding: 1.3rem;
+}
+
+.wardrobe-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 1rem;
+}
+
+.wardrobe-card {
+  display: grid;
+  min-height: 8.5rem;
+  overflow: hidden;
+  align-content: space-between;
+  padding: 0.75rem;
+  border: 1px dashed #cdb8dc;
+  border-radius: 1rem;
+  color: #5b456b;
+  background: #fffdfc;
+  cursor: pointer;
+}
+
+.wardrobe-card:hover {
+  border-color: #8658aa;
+  background: #fcf7ff;
+}
+
+.wardrobe-card input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.wardrobe-card img {
+  width: 100%;
+  height: 4.5rem;
+  object-fit: contain;
+}
+
+.wardrobe-card span:not(.upload-symbol) {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.wardrobe-card strong {
+  font-size: 0.75rem;
+}
+
+.wardrobe-card small {
+  color: #907f9b;
+  font-size: 0.65rem;
+  line-height: 1.25;
+}
+
+.upload-symbol {
+  display: grid;
+  width: 1.65rem;
+  height: 1.65rem;
+  place-items: center;
+  border-radius: 0.55rem;
+  color: #8152a6;
+  background: #f4e8fa;
+  font-size: 1.2rem;
+}
+
+.completion-panel {
+  padding: 2.4rem 1.3rem;
+  color: #fffdf8;
+  text-align: center;
+  background: linear-gradient(135deg, #5e3b84, #a66bc1);
+}
+
+.completion-spark {
+  display: grid;
+  width: 2.65rem;
+  height: 2.65rem;
+  margin: 0 auto 0.8rem;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.17);
+}
+
+.completion-panel .eyebrow {
+  margin: 0 0 0.45rem;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.completion-panel h2 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 3.7rem;
+  font-weight: 500;
+  letter-spacing: -0.06em;
+}
+
+.completion-panel > p:not(.eyebrow) {
+  margin: 0.15rem 0 1rem;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.completion-link {
+  padding: 0;
+  border: 0;
+  color: #fff;
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 800;
+  text-decoration: underline;
+}
+
+@media (max-width: 720px) {
+  .welcome-screen,
+  .schedule-screen,
+  .meal-screen,
+  .outfit-screen {
+    background-position: center;
+  }
+
+  .planner-layout {
+    grid-template-columns: 1fr;
+    margin-top: 3.5rem;
+  }
+
+  .meal-layout {
+    grid-template-columns: 1fr;
+    margin-top: 3.5rem;
+  }
+
+  .outfit-layout {
+    grid-template-columns: 1fr;
+    margin-top: 3.5rem;
+  }
+
+  .wardrobe-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .meal-card {
+    grid-template-columns: 1fr;
+    align-items: stretch;
+  }
+
+  .planner-intro {
+    position: static;
+  }
+
+  .plan-form {
+    grid-template-columns: 1fr;
+  }
+
+  .notification-bar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .notification-status,
+  .storage-warning {
+    text-align: left;
+  }
+}
+
+@media (min-width: 900px) {
+  .welcome-content {
+    width: min(100% - 8rem, 82rem);
+    justify-items: start;
+    padding-inline: 1rem;
+    text-align: left;
+  }
+
+  .welcome-screen h1 {
+    max-width: 8ch;
+  }
+
+  .quote-card {
+    margin-right: auto;
+  }
+
+  .welcome-footer {
+    right: auto;
+    left: 4rem;
+  }
+
+  .planner-layout,
+  .meal-layout,
+  .outfit-layout {
+    min-height: calc(100vh - 12rem);
+  }
+
+  .schedule-screen,
+  .meal-screen,
+  .outfit-screen {
+    background-attachment: fixed;
+  }
+}
+
+@media (max-width: 720px) {
+  .planning-hub {
+    padding-bottom: 2rem;
+  }
+
+  .planning-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .planning-card,
+  .planning-card:nth-child(2) {
+    min-height: auto;
+    transform: none;
+  }
+
+  .planning-card h2 {
+    margin-top: 1.4rem;
+  }
+
+  .hub-note {
+    margin-top: 2rem;
+  }
+}

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chrona — App Map</title>
+    <style>
+      :root { color: #30243d; background: #fbf8f3; font-family: Inter, Arial, sans-serif; }
+      body { max-width: 900px; margin: 0 auto; padding: 3rem 1.25rem 4rem; line-height: 1.6; }
+      h1, h2 { font-family: Georgia, serif; color: #513575; line-height: 1.1; }
+      h1 { font-size: clamp(2.5rem, 7vw, 4.7rem); margin: 0 0 .5rem; }
+      h2 { margin-top: 2.7rem; }
+      .lead { max-width: 62ch; color: #665775; font-size: 1.08rem; }
+      .card { margin-top: 1.2rem; padding: 1.25rem; border: 1px solid #e0d5e9; border-radius: 1rem; background: #fffdf9; box-shadow: 0 .7rem 2rem #56347812; }
+      .eyebrow { color: #8055a2; font-size: .75rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+      .route { display: grid; gap: 1rem; padding: 0; list-style: none; }
+      .route li { padding: 1rem 1.1rem; border-left: .3rem solid #a677c2; background: #f6effa; }
+      code { padding: .12rem .35rem; border-radius: .3rem; background: #eee5f3; color: #563475; }
+      a { color: #633e87; font-weight: 700; }
+      .note { border-radius: .8rem; padding: 1rem 1.2rem; background: #f7eaf3; }
+      svg { display: block; width: 100%; max-width: 760px; height: auto; margin: 1.2rem auto; }
+      .footer { margin-top: 3rem; color: #766683; font-size: .9rem; }
+    </style>
+  </head>
+  <body>
+    <p class="eyebrow">A compact guide to the finished proof of concept</p>
+    <h1>Chrona</h1>
+    <p class="lead">Chrona helps someone begin the day with encouragement, a time plan, a meal plan, and a simple outfit preview. The main React screen chooses which area to show; small components handle each area; the browser saves the plan locally.</p>
+
+    <section class="card" aria-labelledby="flow-title">
+      <h2 id="flow-title">One action, from typing to result</h2>
+      <svg viewBox="0 0 760 205" role="img" aria-label="A schedule entry travels from the schedule form to App state, then browser storage, then back to the visible schedule list.">
+        <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#7d579f" /></marker></defs>
+        <g fill="#fffdf9" stroke="#7d579f" stroke-width="2"><rect x="14" y="51" width="160" height="82" rx="14" /><rect x="300" y="51" width="160" height="82" rx="14" /><rect x="586" y="51" width="160" height="82" rx="14" /></g>
+        <g font-family="Arial, sans-serif" fill="#39254b" text-anchor="middle"><text x="94" y="82" font-weight="700">Schedule form</text><text x="94" y="106">type plan + time</text><text x="380" y="82" font-weight="700">App day plan</text><text x="380" y="106">updateSchedule()</text><text x="666" y="82" font-weight="700">Browser storage</text><text x="666" y="106">reload keeps it</text></g>
+        <g stroke="#7d579f" stroke-width="3" marker-end="url(#arrow)"><line x1="174" y1="92" x2="292" y2="92" /><line x1="460" y1="92" x2="578" y2="92" /></g>
+        <text x="380" y="180" text-anchor="middle" font-family="Arial, sans-serif" fill="#6b5779">The visible list receives the same saved schedule and sorts it by time.</text>
+      </svg>
+    </section>
+
+    <section aria-labelledby="route-title">
+      <h2 id="route-title">Reference route: follow a schedule entry</h2>
+      <ol class="route">
+        <li><strong>1. <code>src/components/SchedulePlanner.jsx</code> — <code>addPlan</code></strong><br />This is the entry point. It checks that a description and time exist, creates the new plan object, and sends the updated list upward.</li>
+        <li><strong>2. <code>src/App.jsx</code> — <code>updateSchedule</code></strong><br />This is the shared plan holder. It replaces only the schedule part of the day plan, while keeping meals and body shape unchanged.</li>
+        <li><strong>3. <code>src/lib/storage.js</code> — <code>saveDayPlan</code> and <code>loadDayPlan</code></strong><br />These functions write the plan to this browser and restore it when the app opens again. Nothing is sent to a server.</li>
+      </ol>
+    </section>
+
+    <section aria-labelledby="change-title">
+      <h2 id="change-title">To change this, start here</h2>
+      <div class="card"><strong>Change the schedule form words or fields:</strong> edit the labels and inputs in <code>src/components/SchedulePlanner.jsx</code>.</div>
+      <div class="card"><strong>Change how long the browser checks for a due plan:</strong> find <code>setInterval(checkForDuePlans, 10_000)</code> in <code>src/App.jsx</code>.</div>
+      <div class="card"><strong>Change the welcome or planner look:</strong> edit the matching screen rules in <code>src/styles.css</code>. The supplied image files live in <code>public/assets/</code>.</div>
+    </section>
+
+    <section class="note" aria-labelledby="practice-title">
+      <h2 id="practice-title">A practice to reuse</h2>
+      <p>For this project, “a plan stays after refresh” was a visible promise. The code route above lets you connect that promise to the browser-storage functions, and the production build (<code>npm run build</code>) confirmed the finished site compiles. On another project, choose one visible promise first, then trace its input, the place that holds the data, and the result the person sees before changing it.</p>
+    </section>
+
+    <section aria-labelledby="run-title">
+      <h2 id="run-title">Run it again</h2>
+      <p>In the project folder, run <code>npm install</code> once, then <code>npm run dev</code> and open the address it prints. Run <code>npm run build</code> to create the deployable version in <code>dist</code>.</p>
+    </section>
+
+    <p class="footer">Map snapshot based on source commit <code>aac94da</code>. It is a guide to this version of the app; refresh it after making major changes.</p>
+  </body>
+</html>
