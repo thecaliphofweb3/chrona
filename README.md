@@ -2,6 +2,11 @@
 
 Chrona is a calm daily-planning website that brings a schedule, meal plan, and visual outfit preview together in one morning ritual.
 
+## Live links
+
+- [Public website](https://chrona-smoky.vercel.app)
+- [Public GitHub repository](https://github.com/thecaliphofweb3/chrona)
+
 ## Run it locally
 
 1. Install a current version of [Node.js](https://nodejs.org/).

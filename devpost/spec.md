@@ -160,6 +160,7 @@ KETCHA/
 ### GitHub and Vercel Deployment
 
 - **Purpose:** GitHub hosts the public project repository; Vercel turns the Vite build into a public website.
+- **Published links:** repository: [github.com/thecaliphofweb3/chrona](https://github.com/thecaliphofweb3/chrona); live site: [chrona-smoky.vercel.app](https://chrona-smoky.vercel.app).
 - **Interaction:** no application API request is made. The learner imports the GitHub repository in the Vercel dashboard; Vercel builds from `package.json` on each chosen Git push.
 - **Credentials and cost:** no key is embedded in application code. The learner signs into GitHub and Vercel during deploy and should choose an account plan appropriate to them.
 - **Docs:** [Vercel deployment overview](https://vercel.com/docs/deployments/overview).
