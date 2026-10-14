@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import WellnessTip from './WellnessTip.jsx'
 
 const mealDetails = [
@@ -7,7 +8,10 @@ const mealDetails = [
 ]
 
 function MealPlanner({ meals, onBack, onMealsChange, storageMessage }) {
+  const [isMealPlanSaved, setIsMealPlanSaved] = useState(false)
+
   const updateMeal = (mealKey, field, value) => {
+    setIsMealPlanSaved(false)
     onMealsChange({
       ...meals,
       [mealKey]: {
@@ -67,6 +71,12 @@ function MealPlanner({ meals, onBack, onMealsChange, storageMessage }) {
           </section>
 
           {storageMessage && <p className="storage-warning">{storageMessage}</p>}
+          <div className="meal-actions">
+            <button className="primary-button" type="button" onClick={() => setIsMealPlanSaved(true)}>
+              Save meal plan <span aria-hidden="true">✓</span>
+            </button>
+            {isMealPlanSaved && <p className="meal-saved-message" role="status">Your meal plan is saved for today.</p>}
+          </div>
           <p className="meal-note">Your plans are saved only in this browser. This is general meal planning—not medical advice.</p>
         </div>
       </div>
