@@ -30,3 +30,7 @@ To confirm the production version builds, run `npm run build`. To preview that b
 ## Wellness tips
 
 The meal planner uses a small local rotation of general wellness tips with visible World Health Organization sources. They are not personalised medical or dietary advice.
+
+## License
+
+This project is available under the [MIT License](LICENSE).
